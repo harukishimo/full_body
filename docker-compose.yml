@@ -46,3 +46,8 @@ services:
       - "6379:6379"
     volumes:
       - redis_data:/data
+volumes:
+  db_data:
+  redis_data:
+  bundle_data:
+  node_modules:
