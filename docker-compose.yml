@@ -28,8 +28,10 @@ services:
   backend:
     build:
       context: ./backend
-      dockerfile: Dockerfile
-    command: bundle exec rails server
+      dockerfile: Dockerfile.dev
+    command: bash -c "bundle install && bin/rails db:apply && rails s -b 0.0.0.0 -p 3001"
+
+
     ports:
       - "3001:3001"
     depends_on:
