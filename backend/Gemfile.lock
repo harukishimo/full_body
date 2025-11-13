@@ -192,6 +192,9 @@ GEM
     raabro (1.4.0)
     racc (1.8.1)
     rack (3.2.4)
+    rack-cors (3.0.0)
+      logger
+      rack (>= 3.0.14)
     rack-session (2.1.1)
       base64 (>= 0.1.0)
       rack (>= 3.0.0)
@@ -235,6 +238,8 @@ GEM
       erb
       psych (>= 4.0.0)
       tsort
+    redis-client (0.26.1)
+      connection_pool
     regexp_parser (2.11.3)
     reline (0.6.3)
       io-console (~> 0.5)
@@ -275,6 +280,12 @@ GEM
       ffi (~> 1.12)
       logger
     securerandom (0.4.1)
+    sidekiq (8.0.9)
+      connection_pool (>= 2.5.0)
+      json (>= 2.9.0)
+      logger (>= 1.6.2)
+      rack (>= 3.1.0)
+      redis-client (>= 0.23.2)
     solid_cable (3.0.12)
       actioncable (>= 7.2)
       activejob (>= 7.2)
@@ -332,9 +343,11 @@ DEPENDENCIES
   kamal
   pg (~> 1.5)
   puma (>= 5.0)
+  rack-cors
   rails (~> 8.1.1)
   ridgepole
   rubocop-rails-omakase
+  sidekiq
   solid_cable
   solid_cache
   solid_queue

@@ -48,6 +48,21 @@ services:
       - "6379:6379"
     volumes:
       - redis_data:/data
+  sidekiq:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.dev
+    command: sidekiq -C config/sidekiq.yml
+    depends_on:
+      - redis
+      - db
+    volumes:
+      - ./backend:/app
+      - bundle_data:/usr/local/bundle
+    ports:
+      - "3002:3002"
+    env_file:
+      - .env
 volumes:
   db_data:
   redis_data:
