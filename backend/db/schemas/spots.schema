@@ -1,0 +1,11 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+create_table "spots" do |t|
+  t.string "name"
+  t.string "spot_kind"
+  t.integer "default_points"
+  t.string "meta_json"
+  t.bigint "vendor_id"
+  t.bigint "speaker_id"
+  t.timestamps
+end

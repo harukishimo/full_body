@@ -1,0 +1,10 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+create_table "event_quizzes" do |t|
+  t.bigint "event_content_id"
+  t.bigint "quiz_id"
+  t.integer "points"
+  t.integer "order"
+  t.boolean "active"
+  t.timestamps
+end

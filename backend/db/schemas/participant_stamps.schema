@@ -1,0 +1,8 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+create_table "participant_stamps" do |t|
+  t.bigint "user_id"
+  t.bigint "event_spot_id"
+  t.string "source"
+  t.timestamps
+end

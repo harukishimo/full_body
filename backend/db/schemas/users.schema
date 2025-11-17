@@ -1,0 +1,9 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+create_table "users" do |t|
+  t.string "line_user_id", null: false
+  t.string "provider", null: false
+  t.string "name", null: false
+  t.string "role", null: false
+  t.timestamps
+end

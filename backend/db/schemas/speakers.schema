@@ -1,0 +1,10 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+create_table "speakers" do |t|
+  t.string "name"
+  t.string "affiliation"
+  t.string "title"
+  t.text "bio"
+  t.string "photo_url"
+  t.timestamps
+end

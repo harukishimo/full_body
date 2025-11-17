@@ -1,0 +1,10 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+create_table "quizzes" do |t|
+  t.string "question", null: false
+  t.json "options"
+  t.string "correct_key"
+  t.integer "default_points"
+  t.boolean "active"
+  t.timestamps
+end

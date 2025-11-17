@@ -1,0 +1,8 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+create_table "event_contents" do |t|
+  t.bigint "event_id"
+  t.bigint "content_id"
+  t.integer "order"
+  t.timestamps
+end
