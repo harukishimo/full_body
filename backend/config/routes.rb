@@ -11,6 +11,7 @@ Rails.application.routes.draw do
       get "health" => "health#index", as: :health_check
       get "get_stamps" => "stamps#index", as: :get_stamps
       resource :users, only: %i[new create]
+      resource :events
     end
   end
   # Defines the root path route ("/")

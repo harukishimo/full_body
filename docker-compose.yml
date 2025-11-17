@@ -24,7 +24,6 @@ services:
       - .env
     volumes:
       - ./frontend:/app
-      - node_modules:/app/node_modules
   backend:
     build:
       context: ./backend
