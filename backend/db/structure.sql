@@ -59,6 +59,41 @@ ALTER SEQUENCE public.contents_id_seq OWNED BY public.contents.id;
 
 
 --
+-- Name: discussions; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.discussions (
+    id bigint NOT NULL,
+    name character varying,
+    affiliation character varying,
+    title character varying,
+    bio text,
+    photo_url character varying,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: discussions_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.discussions_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: discussions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.discussions_id_seq OWNED BY public.discussions.id;
+
+
+--
 -- Name: event_contents; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -421,10 +456,11 @@ ALTER SEQUENCE public.users_id_seq OWNED BY public.users.id;
 CREATE TABLE public.vendors (
     id bigint NOT NULL,
     name character varying NOT NULL,
-    content_type character varying,
     description text,
     created_at timestamp(6) without time zone NOT NULL,
-    updated_at timestamp(6) without time zone NOT NULL
+    updated_at timestamp(6) without time zone NOT NULL,
+    profile text,
+    links_json character varying
 );
 
 
@@ -452,6 +488,13 @@ ALTER SEQUENCE public.vendors_id_seq OWNED BY public.vendors.id;
 --
 
 ALTER TABLE ONLY public.contents ALTER COLUMN id SET DEFAULT nextval('public.contents_id_seq'::regclass);
+
+
+--
+-- Name: discussions id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.discussions ALTER COLUMN id SET DEFAULT nextval('public.discussions_id_seq'::regclass);
 
 
 --
@@ -545,6 +588,14 @@ ALTER TABLE ONLY public.ar_internal_metadata
 
 ALTER TABLE ONLY public.contents
     ADD CONSTRAINT contents_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: discussions discussions_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.discussions
+    ADD CONSTRAINT discussions_pkey PRIMARY KEY (id);
 
 
 --

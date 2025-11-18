@@ -1,8 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import MasterCard from "@/components/MasterCard";
-import EventCard from "@/components/EventCard";
+import EventForm from "@/components/EventForm";
+import ContentForm from "@/components/ContentForm";
+import VendorForm from "@/components/VendorForm";
+import DiscussionForm from "@/components/DiscussionForm";
+import QuizForm from "@/components/QuizForm";
 
 export default function ApiTestPage() {
   const [data, setData] = useState(null);
@@ -16,8 +19,11 @@ export default function ApiTestPage() {
 
   return (
     <>
-        <MasterCard />
-        <EventCard />
+        <ContentForm />
+        <EventForm />
+        <VendorForm />
+        <DiscussionForm />
+        <QuizForm />
     </>
 
   );

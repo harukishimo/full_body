@@ -12,6 +12,10 @@ Rails.application.routes.draw do
       get "get_stamps" => "stamps#index", as: :get_stamps
       resource :users, only: %i[new create]
       resource :events
+      resource :contents
+      resource :vendors
+      resource :discussions
+      resource :quizzes
     end
   end
   # Defines the root path route ("/")

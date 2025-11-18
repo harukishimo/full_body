@@ -2,7 +2,8 @@
 # vi: set ft=ruby :
 create_table "vendors" do |t|
   t.string "name", null: false
-  t.string "content_type"
+  t.text "profile"
+  t.string "links_json"
   t.text "description"
   t.timestamps
 end

@@ -1,22 +1,21 @@
 "use client";
 
-import InputDateTime from "@/components/InputDate";
 import { useState } from "react";
 
-export default function EventForm() {
+export default function ContentForm() {
   const [name, setName] = useState("");
-  const [selectedDate, setSelectedDate] = useState<Date | null>(null); 
+  const [description, setDescription] = useState(""); 
   const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault(); // ページリロード防止
 
-    const res = await fetch(`${API_BASE_URL}/api/v1/events`, {
+    const res = await fetch(`${API_BASE_URL}/api/v1/contents`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ name }),
+      body: JSON.stringify({ name, description }),
     });
 
     if (!res.ok) {
@@ -26,12 +25,14 @@ export default function EventForm() {
 
     const json = await res.json();
     console.log("保存成功:", json);
+    setName("");
+    setDescription("")
     alert("保存しました！");
   }
 
   return (
     <div className="max-w-sm bg-white border border-gray-200 rounded-xl shadow p-4">
-      <h2 className="mt-3 text-xl font-semibold text-gray-900">イベントマスタ追加</h2>
+      <h2 className="mt-3 text-xl font-semibold text-gray-900">コンテンツマスタ追加</h2>
 
       <form onSubmit={handleSubmit} className="space-y-4 mt-4">
 
@@ -41,15 +42,18 @@ export default function EventForm() {
           className="border p-2 rounded w-full"
           value={name}
           onChange={(e) => setName(e.target.value)}
-          placeholder="イベント名を入力"
+          placeholder="コンテンツ名を入力"
+        />
+
+        <input
+          type="text"
+          name="description"
+          className="border p-2 rounded w-full"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          placeholder="説明を入力"
         />
         
-        <InputDateTime
-            name="start_date"
-            value={selectedDate}
-            onChange={setSelectedDate}
-            placeholder="開始日時を入力"
-        />
 
         <button
           type="submit"
